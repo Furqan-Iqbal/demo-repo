@@ -35,7 +35,7 @@ pipeline {
     stage("test") {
       steps {
         
-        scrip{
+        script{
           gv.testApp()
         }
       }
