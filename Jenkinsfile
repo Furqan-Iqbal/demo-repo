@@ -4,12 +4,12 @@ pipeline {
   
   tools {
     maven 'Maven'
-    
+  }
     parameters {
       choice(name: 'VERSION', choices: ['1.1.0', '1.2.0'], description: '')
       booleanParam(name: 'executeTests', defaultValue: true, description: '') 
     
-  
+    }
   environment {
     SERVER_CREDENTIALS = credentials ('da0b8891-c80c-4073-91b9-d91fb46849d2')
   }  
