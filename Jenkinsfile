@@ -1,10 +1,9 @@
+def gv
+
 pipeline {
   
   agent any
   
-  tools {
-    maven 'Maven'
-  }
     parameters {
       choice(name: 'VERSION', choices: ['1.1.0', '1.2.0'], description: '')
       booleanParam(name: 'executeTests', defaultValue: true, description: '') 
@@ -16,13 +15,23 @@ pipeline {
   
   stages {
     
-    stage("build") {
+    stage("init") {
       steps {
+        script{
+          gv= load "script.groovy"
+        }
         echo 'building the application...'
         echo 'changed now'
       }
     }
-    
+    stage("build"){
+      steps{
+        script{
+          gv.buildApp()
+        }
+      }
+    }
+   
     stage("test") {
       when {
         expression {
@@ -30,15 +39,18 @@ pipeline {
         }
       }
       steps {
-        echo 'testing the application....'
+        
+        scrip{
+          gv.testApp()
+        }
       }
     }
     stage("deploy"){
       
       steps {
-        echo 'deploying the application....'
-        echo "deploying version ${params.VERSION}"
-        echo "deploying with ${SERVER_CREDENTIALS}"
+        script{
+          gv.deployApp()
+        }
         
       }
     }
