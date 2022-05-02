@@ -43,7 +43,7 @@ pipeline {
         sh "${SERVER_CREDENTIALS}"
         withCredentials([
           usernamePassword( credentials: 'da0b8891-c80c-4073-91b9-d91fb46849d2', usernameVariable: USER, passwordVariable: PWD)
-          )]
+          ])
                         { 
                           sh "some script ${USER} ${PWD} "  
                         }
