@@ -17,7 +17,6 @@ pipeline {
   stages {
     
     stage("build") {
-      
       steps {
         echo 'building the application...'
         echo 'changed now'
