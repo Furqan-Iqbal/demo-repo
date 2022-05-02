@@ -33,11 +33,6 @@ pipeline {
     }
    
     stage("test") {
-      when {
-        expression {
-          params.executeTests
-        }
-      }
       steps {
         
         scrip{
